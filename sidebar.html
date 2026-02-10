@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Sidebar</title>
+    <link rel="stylesheet" href="sidebar.css" />
+  </head>
+  <body>
+    <main class="layout">
+      <header class="header">
+        <h1>AI Sidebar</h1>
+        <p>Выберите сервис и откройте его прямо здесь.</p>
+      </header>
+
+      <section class="services" aria-label="Список AI-сервисов">
+        <button class="service-button active" data-url="https://chatgpt.com" type="button">
+          <span class="icon">🤖</span>
+          <span class="text">
+            <strong>ChatGPT</strong>
+            <small>chatgpt.com</small>
+          </span>
+        </button>
+
+        <button class="service-button" data-url="https://copilot.microsoft.com" type="button">
+          <span class="icon">🧠</span>
+          <span class="text">
+            <strong>Microsoft Copilot</strong>
+            <small>copilot.microsoft.com</small>
+          </span>
+        </button>
+
+        <button class="service-button" data-url="https://claude.ai" type="button">
+          <span class="icon">✨</span>
+          <span class="text">
+            <strong>Claude</strong>
+            <small>claude.ai</small>
+          </span>
+        </button>
+
+        <button class="service-button" data-url="https://gemini.google.com" type="button">
+          <span class="icon">💎</span>
+          <span class="text">
+            <strong>Google Gemini</strong>
+            <small>gemini.google.com</small>
+          </span>
+        </button>
+      </section>
+
+      <section class="viewer">
+        <div class="viewer-toolbar">
+          <span id="current-service">ChatGPT</span>
+          <button id="open-in-tab" type="button">Открыть в новой вкладке</button>
+        </div>
+
+        <div id="iframe-container" class="iframe-container">
+          <iframe
+            id="service-frame"
+            title="AI service"
+            referrerpolicy="no-referrer"
+            src="https://chatgpt.com"
+          ></iframe>
+
+          <div id="iframe-fallback" class="fallback hidden">
+            <p>Этот сайт запрещает открытие через iframe.</p>
+            <p>Откройте сервис в отдельной вкладке.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="sidebar.js"></script>
+  </body>
+</html>

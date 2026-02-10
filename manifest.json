@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "AI Sidebar Launcher",
+  "description": "Быстрый доступ к популярным AI-сервисам прямо в боковой панели Chrome.",
+  "version": "1.0.0",
+  "permissions": ["sidePanel", "storage"],
+  "action": {
+    "default_title": "Открыть AI Sidebar"
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "side_panel": {
+    "default_path": "sidebar.html"
+  }
+}
