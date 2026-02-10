@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Sidebar</title>
+    <link rel="stylesheet" href="sidebar.css" />
+  </head>
+  <body>
+    <main class="layout">
+      <header class="header">
+        <h1>AI Sidebar</h1>
+        <p>Обход iframe-блокировок: встроенный чат + быстрый запуск внешних AI.</p>
+      </header>
+
+      <section class="tabs" aria-label="Режимы">
+        <button class="tab-button active" data-tab="assistant" type="button">Встроенный чат</button>
+        <button class="tab-button" data-tab="launcher" type="button">Внешние сервисы</button>
+      </section>
+
+      <section id="assistant-tab" class="tab-panel">
+        <div class="settings">
+          <label for="api-key">OpenRouter API key</label>
+          <input id="api-key" type="password" placeholder="sk-or-v1-..." autocomplete="off" />
+          <div class="settings-actions">
+            <select id="model-select">
+              <option value="openai/gpt-4o-mini">gpt-4o-mini</option>
+              <option value="anthropic/claude-3.5-sonnet">claude-3.5-sonnet</option>
+              <option value="google/gemini-2.0-flash-001">gemini-2.0-flash</option>
+            </select>
+            <button id="save-key" type="button">Сохранить</button>
+          </div>
+          <small>
+            Ключ хранится локально в Chrome Storage. Без ключа можно использовать только вкладку
+            «Внешние сервисы».
+          </small>
+        </div>
+
+        <div id="chat-log" class="chat-log" aria-live="polite"></div>
+
+        <form id="chat-form" class="chat-form">
+          <textarea
+            id="chat-input"
+            rows="3"
+            placeholder="Напишите запрос..."
+            required
+          ></textarea>
+          <button id="send-btn" type="submit">Отправить</button>
+        </form>
+      </section>
+
+      <section id="launcher-tab" class="tab-panel hidden">
+        <div class="launcher-help">
+          <p>
+            Большинство AI-сайтов блокируют iframe через CSP/X-Frame-Options. Поэтому здесь:
+            <strong>копируем запрос и открываем сервис в новой вкладке</strong>.
+          </p>
+        </div>
+
+        <div class="quick-prompt">
+          <label for="handoff-input">Запрос для передачи</label>
+          <textarea id="handoff-input" rows="3" placeholder="Введите запрос..."></textarea>
+          <div class="quick-actions">
+            <button id="copy-prompt" type="button">Скопировать запрос</button>
+          </div>
+        </div>
+
+        <section class="services" aria-label="Список AI-сервисов">
+          <button class="service-button" data-service="chatgpt" type="button">
+            <span class="icon">🤖</span>
+            <span class="text"><strong>ChatGPT</strong><small>chatgpt.com</small></span>
+          </button>
+          <button class="service-button" data-service="copilot" type="button">
+            <span class="icon">🧠</span>
+            <span class="text"><strong>Microsoft Copilot</strong><small>copilot.microsoft.com</small></span>
+          </button>
+          <button class="service-button" data-service="claude" type="button">
+            <span class="icon">✨</span>
+            <span class="text"><strong>Claude</strong><small>claude.ai</small></span>
+          </button>
+          <button class="service-button" data-service="gemini" type="button">
+            <span class="icon">💎</span>
+            <span class="text"><strong>Google Gemini</strong><small>gemini.google.com</small></span>
+          </button>
+          <button class="service-button" data-service="perplexity" type="button">
+            <span class="icon">🔎</span>
+            <span class="text"><strong>Perplexity</strong><small>perplexity.ai</small></span>
+          </button>
+        </section>
+
+        <p id="launch-status" class="status">Готово.</p>
+      </section>
+    </main>
+
+    <script src="sidebar.js"></script>
+  </body>
+</html>
